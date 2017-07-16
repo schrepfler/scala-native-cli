@@ -1,12 +1,15 @@
 import caseapp._
 
-case class ExampleOptions(
+case class Options(
   name: String
 )
 
-object Hello extends CaseApp[ExampleOptions] {
+object Hello extends CaseApp[Options] {
 
-  def run(options: ExampleOptions, arg: RemainingArgs): Unit = {
+  //  needed as scala-native at the moment does not import properly the main from CaseApp
+  override def main(args: Array[String]) = super.main(args)
+
+  def run(options: Options, arg: RemainingArgs): Unit = {
     println(s"Hello, ${options.name}!")
   }
 
