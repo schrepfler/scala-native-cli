@@ -1,7 +1,9 @@
 import caseapp._
 
 case class Options(
-  name: String
+  name: String,
+  enable: Boolean = false,
+  option: Option[String]
 )
 
 object Hello extends CaseApp[Options] {
@@ -11,6 +13,8 @@ object Hello extends CaseApp[Options] {
 
   def run(options: Options, arg: RemainingArgs): Unit = {
     println(s"Hello, ${options.name}!")
+    println(s"is enabled: ${options.enable}")
+    println(s"option is ${options.option}")
   }
 
 }
